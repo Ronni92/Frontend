@@ -10,12 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (result) alert('Login exitoso');
   });
 
-  document.getElementById('register-btn').addEventListener('click', async () => {
-    const user = document.getElementById('register-user').value;
-    const pass = document.getElementById('register-pass').value;
-    const result = await register(user, pass);
-    if (result) alert('Registro exitoso');
-  });
+document.getElementById('register-btn').addEventListener('click', async () => {
+  const user = document.getElementById('register-user').value;
+  const email = document.getElementById('register-email').value;
+  const pass = document.getElementById('register-pass').value;
+  const result = await register(user, email, pass);
+  if (result) alert('Registro exitoso');
+});
+
 
   document.getElementById('ver-roles-btn').addEventListener('click', async () => {
     const lista = document.getElementById('lista-roles');

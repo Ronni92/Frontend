@@ -1,9 +1,9 @@
-export async function register(username, password) {
+export async function register(username, email, password) {
   try {
-    const response = await fetch('http://54.144.153.107:81/register', {
+    const response = await fetch("http://44.198.34.88:81/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({ username, email, password })
     });
 
     if (!response.ok) throw new Error("Error al registrar");
