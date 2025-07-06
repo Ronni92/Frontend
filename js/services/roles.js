@@ -1,26 +1,16 @@
 export async function obtenerRoles() {
-  try {
-    const response = await fetch("http://44.219.96.83:82/roles");
-    if (!response.ok) throw new Error("Error al obtener los roles");
-    return await response.json();
-  } catch (error) {
-    console.error("Error:", error);
-    return null;
-  }
+  const res = await fetch("/api/roles");
+  return await res.json();
 }
 
-export async function crearRol(nombre) {
-  try {
-    const response = await fetch("http://44.219.96.83:82/roles", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ nombre })
-    });
+window.handleVerRoles = async () => {
+  const roles = await obtenerRoles();
+  const lista = document.getElementById("lista-roles");
+  lista.innerHTML = "";
 
-    if (!response.ok) throw new Error("Error al crear rol");
-    return await response.json();
-  } catch (error) {
-    alert("Error al crear rol: " + error.message);
-    return null;
-  }
-}
+  roles.forEach(rol => {
+    const li = document.createElement("li");
+    li.innerText = `${rol.id}: ${rol.nombre}`;
+    lista.appendChild(li);
+  });
+};

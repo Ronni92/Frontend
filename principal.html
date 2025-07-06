@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NutriPets - Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+    nav a { margin: 0 15px; font-weight: bold; cursor: pointer; color: #0077cc; }
+    section { display: none; margin-top: 30px; background: #fff; padding: 20px; border-radius: 8px; }
+    section.active { display: block; }
+  </style>
+</head>
+<body>
+  <h1>NutriPets 🐾 - Dashboard Principal</h1>
+
+  <nav>
+    <a onclick="mostrarVista('vista-login')">Login</a>
+    <a onclick="mostrarVista('vista-register')">Registro</a>
+    <a onclick="mostrarVista('vista-roles')">Roles</a>
+    <a onclick="mostrarVista('vista-pets')">Mascotas</a>
+<a onclick="mostrarVista('vista-medical')">Datos Médicos</a>
+
+    <!-- Puedes agregar más vistas como "Mascotas", "Productos", etc. -->
+  </nav>
+
+  <!-- VISTA LOGIN -->
+  <section id="vista-login" class="active">
+    <h2>🔐 Login</h2>
+    <input type="email" id="login-email" placeholder="Correo" />
+    <input type="password" id="login-pass" placeholder="Contraseña" />
+    <button onclick="handleLogin()">Iniciar sesión</button>
+  </section>
+
+  <!-- VISTA REGISTRO -->
+  <section id="vista-register">
+    <h2>📝 Registro</h2>
+    <input type="text" id="register-user" placeholder="Usuario" />
+    <input type="email" id="register-email" placeholder="Correo" />
+    <input type="password" id="register-pass" placeholder="Contraseña" />
+    <button onclick="handleRegister()">Registrarse</button>
+  </section>
+
+  <!-- VISTA ROLES -->
+  <section id="vista-roles">
+    <h2>📋 Roles disponibles</h2>
+    <button onclick="handleVerRoles()">Ver Roles</button>
+    <ul id="lista-roles"></ul>
+  </section>
+
+  <script type="module">
+    import { login } from "./js/login.js";
+    import { register } from "./js/register.js";
+    import { obtenerRoles } from "./js/roles.js";
+
+    window.handleLogin = async () => {
+      const email = document.getElementById("login-email").value;
+      const pass = document.getElementById("login-pass").value;
+      const res = await login(email, pass);
+      alert(res.message || "Login completado");
+    };
+
+    window.handleRegister = async () => {
+      const user = document.getElementById("register-user").value;
+      const email = document.getElementById("register-email").value;
+      const pass = document.getElementById("register-pass").value;
+      const res = await register(user, email, pass);
+      alert(res.message || "Registro completado");
+    };
+
+    window.handleVerRoles = async () => {
+      const lista = document.getElementById("lista-roles");
+      lista.innerHTML = "Cargando...";
+      const roles = await obtenerRoles();
+      lista.innerHTML = "";
+      roles.forEach(r => {
+        const li = document.createElement("li");
+        li.innerText = `${r.id}: ${r.nombre}`;
+        lista.appendChild(li);
+      });
+    };
+
+    
+
+    window.mostrarVista = (id) => {
+      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    };
+  </script>
+</body>
+</html>

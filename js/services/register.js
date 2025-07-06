@@ -1,15 +1,18 @@
 export async function register(username, email, password) {
-  try {
-    const response = await fetch("http://44.198.34.88:81/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, email, password })
-    });
+  const res = await fetch("/api/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, email, password }),
+  });
 
-    if (!response.ok) throw new Error("Error al registrar");
-    return await response.json();
-  } catch (error) {
-    alert("Error en registro: " + error.message);
-    return null;
-  }
+  return await res.json();
 }
+
+window.handleRegister = async () => {
+  const username = document.getElementById("register-user").value;
+  const email = document.getElementById("register-email").value;
+  const password = document.getElementById("register-pass").value;
+
+  const result = await register(username, email, password);
+  alert(result.message || "Registro completo");
+};

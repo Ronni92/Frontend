@@ -2,59 +2,54 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NutriPets - Sistema Distribuido</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriPets</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header class="header">
-    <div class="container">
-      <h1 class="logo">🐾 NutriPets</h1>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#">Servicios</a></li>
-          <li><a href="#">Productos</a></li>
-          <li><a href="#">Contacto</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <h1>NutriPets: Plataforma distribuida</h1>
 
-  <main class="main-content container">
-    <!-- Login -->
-    <section class="form-section">
-      <h2>Login</h2>
-      <form id="login-form">
-        <input type="text" id="login-user" placeholder="Usuario" required />
-        <input type="password" id="login-pass" placeholder="Contraseña" required />
-        <button type="button" id="login-btn">Iniciar Sesión</button>
-      </form>
-    </section>
+  <section>
+    <h2>📝 Registro</h2>
+    <input type="text" id="register-user" placeholder="Usuario" />
+    <input type="email" id="register-email" placeholder="Correo" />
+    <input type="password" id="register-pass" placeholder="Contraseña" />
+    <button onclick="handleRegister()">Registrarse</button>
+  </section>
 
-    <!-- Registro -->
-    <section class="form-section">
-      <h2>Registro</h2>
-      <form id="register-form">
-  <input type="text" id="register-user" placeholder="Usuario" required />
-  <input type="email" id="register-email" placeholder="Correo electrónico" required />
-  <input type="password" id="register-pass" placeholder="Contraseña" required />
-  <button type="button" id="register-btn">Registrarse</button>
-</form>
+  <section>
+    <h2>🔐 Login</h2>
+    <input type="email" id="login-email" placeholder="Correo" />
+    <input type="password" id="login-pass" placeholder="Contraseña" />
+    <button onclick="handleLogin()">Iniciar Sesión</button>
+  </section>
+
+  <section>
+    <h2>📋 Roles disponibles</h2>
+    <button onclick="handleVerRoles()">Ver Roles</button>
+    <ul id="lista-roles"></ul>
+  </section>
+
+  <!-- VISTA REGISTRO DE MASCOTAS -->
+<section id="vista-pets">
+  <h2>🐾 Registrar Mascota</h2>
+  <input type="text" id="pet-name" placeholder="Nombre de la mascota" />
+  <input type="text" id="pet-type" placeholder="Tipo (perro, gato...)" />
+  <input type="number" id="pet-age" placeholder="Edad" />
+  <button onclick="handleRegisterPet()">Registrar Mascota</button>
+</section>
+
+<!-- VISTA CONSULTA MÉDICA -->
+<section id="vista-medical">
+  <h2>🩺 Consultar Datos Médicos</h2>
+  <input type="text" id="pet-id-medical" placeholder="ID de la mascota" />
+  <button onclick="handleGetMedical()">Consultar</button>
+  <div id="medical-result"></div>
+</section>
 
 
-    <!-- Roles -->
-    <section class="form-section">
-      <h2>Roles Disponibles</h2>
-      <button type="button" id="ver-roles-btn">Ver Roles</button>
-      <ul id="lista-roles"></ul>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <p>&copy; 2025 NutriPets - Todos los derechos reservados</p>
-  </footer>
-
-  <script type="module" src="js/scripts.js"></script>
+  <script src="js/register.js" type="module"></script>
+  <script src="js/login.js" type="module"></script>
+  <script src="js/roles.js" type="module"></script>
 </body>
 </html>

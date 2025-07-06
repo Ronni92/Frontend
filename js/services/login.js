@@ -1,15 +1,17 @@
-export async function login(username, password) {
-  try {
-    const response = await fetch('http://54.144.153.107:3000/login', {
-   method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password })
-    });
+export async function login(email, password) {
+  const res = await fetch("/api/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
+  });
 
-    if (!response.ok) throw new Error("Login incorrecto");
-    return await response.json();
-  } catch (error) {
-    alert("Error en login: " + error.message);
-    return null;
-  }
+  return await res.json();
 }
+
+window.handleLogin = async () => {
+  const email = document.getElementById("login-email").value;
+  const password = document.getElementById("login-pass").value;
+
+  const result = await login(email, password);
+  alert(result.message || "Intento de login realizado");
+};
