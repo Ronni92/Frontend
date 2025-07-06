@@ -16,3 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (result) alert('Registro exitoso');
   });
 });
+
+window.mostrarVista = function (vistaId) {
+  document.querySelectorAll('.vista').forEach(seccion => seccion.style.display = 'none');
+  document.getElementById(vistaId).style.display = 'block';
+};

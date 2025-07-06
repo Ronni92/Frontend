@@ -1,42 +1,41 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NutriPets - Sistema Distribuido</title>
-  <link rel="stylesheet" href="css/style.css" />
-</head>
 <body>
   <header class="header">
     <div class="container">
       <h1 class="logo">🐾 NutriPets</h1>
       <nav>
         <ul class="nav-links">
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#">Servicios</a></li>
-          <li><a href="#">Productos</a></li>
-          <li><a href="#">Contacto</a></li>
+          <li><a href="#" onclick="mostrarVista('landing')">Inicio</a></li>
+          <li><a href="#" onclick="mostrarVista('login')">Iniciar Sesión</a></li>
+          <li><a href="#" onclick="mostrarVista('register')">Registrarse</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main class="main-content container">
-    <section class="form-section">
+    <!-- Landing -->
+    <section id="landing" class="vista">
+      <h2>Bienvenido a NutriPets</h2>
+      <p>¡Tu asistente nutricional para mascotas! Selecciona una opción del menú para comenzar.</p>
+    </section>
+
+    <!-- Login -->
+    <section id="login" class="vista" style="display: none;">
       <h2>Login</h2>
       <form id="login-form">
-        <input type="text" id="login-username" placeholder="Usuario" required />
-        <input type="password" id="login-password" placeholder="Contraseña" required />
-        <button type="submit">Iniciar Sesión</button>
+        <input type="text" id="login-user" placeholder="Usuario" required />
+        <input type="password" id="login-pass" placeholder="Contraseña" required />
+        <button type="button" id="login-btn">Iniciar Sesión</button>
       </form>
     </section>
 
-    <section class="form-section">
+    <!-- Registro -->
+    <section id="register" class="vista" style="display: none;">
       <h2>Registro</h2>
       <form id="register-form">
-        <input type="text" id="register-username" placeholder="Usuario" required />
-        <input type="password" id="register-password" placeholder="Contraseña" required />
-        <button type="submit">Registrarse</button>
+        <input type="text" id="register-user" placeholder="Usuario" required />
+        <input type="password" id="register-pass" placeholder="Contraseña" required />
+        <button type="button" id="register-btn">Registrarse</button>
       </form>
     </section>
   </main>
@@ -47,4 +46,4 @@
 
   <script src="js/scripts.js"></script>
 </body>
-</html>
+
