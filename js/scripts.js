@@ -1,11 +1,18 @@
-function login() {
-  const user = document.getElementById("login-usuario").value;
-  const pass = document.getElementById("login-password").value;
-  alert(`Intentando iniciar sesión con usuario: ${user}`);
-}
+import { login } from './services/login.js';
+import { register } from './services/register.js';
 
-function register() {
-  const user = document.getElementById("reg-usuario").value;
-  const pass = document.getElementById("reg-password").value;
-  alert(`Intentando registrar usuario: ${user}`);
-}
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('login-btn').addEventListener('click', async () => {
+    const user = document.getElementById('login-user').value;
+    const pass = document.getElementById('login-pass').value;
+    const result = await login(user, pass);
+    if (result) alert('Login exitoso');
+  });
+
+  document.getElementById('register-btn').addEventListener('click', async () => {
+    const user = document.getElementById('register-user').value;
+    const pass = document.getElementById('register-pass').value;
+    const result = await register(user, pass);
+    if (result) alert('Registro exitoso');
+  });
+});
