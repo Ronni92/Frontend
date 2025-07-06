@@ -2,42 +2,47 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NutriPets</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NutriPets - Sistema Distribuido</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <header class="header">
     <div class="container">
-      <h1 class="logo">NutriPets</h1>
+      <h1 class="logo">🐾 NutriPets</h1>
       <nav>
-        <ul>
+        <ul class="nav-links">
           <li><a href="#">Inicio</a></li>
-          <li><a href="#">Tienda</a></li>
+          <li><a href="#">Servicios</a></li>
+          <li><a href="#">Productos</a></li>
           <li><a href="#">Contacto</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main class="main-container">
-    <section class="card">
-      <h2>Iniciar Sesión</h2>
-      <input type="text" placeholder="Usuario" id="login-usuario" />
-      <input type="password" placeholder="Contraseña" id="login-password" />
-      <button onclick="login()">Entrar</button>
+  <main class="main-content container">
+    <section class="form-section">
+      <h2>Login</h2>
+      <form id="login-form">
+        <input type="text" id="login-username" placeholder="Usuario" required />
+        <input type="password" id="login-password" placeholder="Contraseña" required />
+        <button type="submit">Iniciar Sesión</button>
+      </form>
     </section>
 
-    <section class="card">
-      <h2>Registrarse</h2>
-      <input type="text" placeholder="Usuario" id="reg-usuario" />
-      <input type="password" placeholder="Contraseña" id="reg-password" />
-      <button onclick="register()">Registrar</button>
+    <section class="form-section">
+      <h2>Registro</h2>
+      <form id="register-form">
+        <input type="text" id="register-username" placeholder="Usuario" required />
+        <input type="password" id="register-password" placeholder="Contraseña" required />
+        <button type="submit">Registrarse</button>
+      </form>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 NutriPets. Todos los derechos reservados.</p>
+  <footer class="footer">
+    <p>&copy; 2025 NutriPets - Todos los derechos reservados</p>
   </footer>
 
   <script src="scripts.js"></script>
