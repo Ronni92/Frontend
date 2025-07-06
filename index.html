@@ -1,33 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>NutriPets Frontend</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriPets</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <h1>NutriPets - Sistema Distribuido</h1>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">NutriPets</h1>
+      <nav>
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Tienda</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  <div id="content">
-    <!-- Aquí se renderiza cada microservicio -->
-    <section id="login">
-      <h2>Login</h2>
-      <input type="text" id="loginUser" placeholder="Usuario">
-      <input type="password" id="loginPass" placeholder="Contraseña">
-      <button onclick="login()">Iniciar Sesión</button>
-      <div id="loginResult"></div>
+  <main class="main-container">
+    <section class="card">
+      <h2>Iniciar Sesión</h2>
+      <input type="text" placeholder="Usuario" id="login-usuario" />
+      <input type="password" placeholder="Contraseña" id="login-password" />
+      <button onclick="login()">Entrar</button>
     </section>
 
-    <section id="register">
-      <h2>Registro</h2>
-      <input type="text" id="regUser" placeholder="Usuario">
-      <input type="password" id="regPass" placeholder="Contraseña">
-      <button onclick="register()">Registrarse</button>
-      <div id="registerResult"></div>
+    <section class="card">
+      <h2>Registrarse</h2>
+      <input type="text" placeholder="Usuario" id="reg-usuario" />
+      <input type="password" placeholder="Contraseña" id="reg-password" />
+      <button onclick="register()">Registrar</button>
     </section>
-  </div>
+  </main>
 
-  <script src="js/services/login.js"></script>
-  <script src="js/services/register.js"></script>
+  <footer>
+    <p>&copy; 2025 NutriPets. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="scripts.js"></script>
 </body>
 </html>
